@@ -1,0 +1,56 @@
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import TodoList from '../components/TodoList'
+
+class Home extends Component {
+  constructor(args) {
+    super(args)
+    this.state = {
+      text: ''
+    }
+    this.onSubmit = this.onSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+  static propTypes = {
+    todos: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        completed: PropTypes.bool.isRequired,
+        text: PropTypes.string.isRequired
+      }).isRequired
+    ).isRequired,
+
+    addTodo: PropTypes.func.isRequired,
+    toggleTodo: PropTypes.func.isRequired
+  }
+  render() {
+    let { todos, toggleTodo } = this.props
+    return (
+      <div>
+        <form onSubmit={this.onSubmit}>
+          <input
+            type="text"
+            placeholder="请输入内容"
+            value={this.state.text}
+            onChange={this.handleChange}
+          />
+          <button type="submit">Add Todo</button>
+        </form>
+        <TodoList todos={todos} toggleTodo={toggleTodo} />
+      </div>
+    )
+  }
+  onSubmit(e) {
+    let { text } = this.state
+    e.preventDefault()
+    if (!text) {
+      return
+    }
+    this.props.addTodo(text)
+    this.setState({ text: '' })
+  }
+  handleChange(e) {
+    this.setState({ text: e.target.value })
+  }
+}
+export default Home

@@ -1,16 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import App from './components/App'
-import reducer from './reducers'
-import 'todomvc-app-css/index.css'
+import { createStore, applyMiddleware } from 'redux'
+import promiseMiddleware from 'redux-promise'
+// import { Provider } from 'react-redux'
 
-const store = createStore(reducer)
+import rootReducer from './reducers'
+import Root from './router/root'
 
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-)
+const store = createStore(rootReducer, applyMiddleware(promiseMiddleware))
+
+render(<Root store={store} />, document.getElementById('root'))

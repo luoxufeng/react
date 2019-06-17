@@ -1,9 +1,23 @@
-import * as types from '../constants/ActionTypes'
+import { createAction } from 'redux-actions'
+let nextTodoId = 0
+export const addTodo = text => ({
+  type: 'ADD_TODO',
+  id: nextTodoId++,
+  text
+})
 
-export const addTodo = text => ({ type: types.ADD_TODO, text })
-export const deleteTodo = id => ({ type: types.DELETE_TODO, id })
-export const editTodo = (id, text) => ({ type: types.EDIT_TODO, id, text })
-export const completeTodo = id => ({ type: types.COMPLETE_TODO, id })
-export const completeAllTodos = () => ({ type: types.COMPLETE_ALL_TODOS })
-export const clearCompleted = () => ({ type: types.CLEAR_COMPLETED })
-export const setVisibilityFilter = filter => ({ type: types.SET_VISIBILITY_FILTER, filter})
+export const setVisibilityFilter = filter => ({
+  type: 'SET_VISIBILITY_FILTER',
+  filter
+})
+
+export const toggleTodo = id => ({
+  type: 'TOGGLE_TODO',
+  id
+})
+
+export const VisibilityFilters = {
+  SHOW_ALL: 'SHOW_ALL',
+  SHOW_COMPLETED: 'SHOW_COMPLETED',
+  SHOW_ACTIVE: 'SHOW_ACTIVE'
+}
