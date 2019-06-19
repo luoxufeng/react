@@ -1,29 +1,18 @@
 import { connect } from 'react-redux'
-import { toggleTodo } from '../actions'
-import { addTodo } from '../actions'
+import { toggleTodo, addTodo, getBanner } from '../actions/index'
 import Home from '../page/Home'
-import { VisibilityFilters } from '../actions'
-
-const getVisibleTodos = (todos, filter) => {
-  switch (filter) {
-    case VisibilityFilters.SHOW_ALL:
-      return todos
-    case VisibilityFilters.SHOW_COMPLETED:
-      return todos.filter(t => t.completed)
-    case VisibilityFilters.SHOW_ACTIVE:
-      return todos.filter(t => !t.completed)
-    default:
-      throw new Error('Unknown filter: ' + filter)
+const mapStateToProps = state => {
+  const { todos, bannerImage } = state.home
+  return {
+    todos,
+    bannerImage
   }
 }
 
-const mapStateToProps = state => ({
-  todos: getVisibleTodos(state.todos, state.visibilityFilter)
-})
-
 const mapDispatchToProps = dispatch => ({
   toggleTodo: id => dispatch(toggleTodo(id)),
-  addTodo: text => dispatch(addTodo(text))
+  addTodo: text => dispatch(addTodo(text)),
+  getBanner: () => dispatch(getBanner())
 })
 
 export default connect(

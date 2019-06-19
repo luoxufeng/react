@@ -12,19 +12,19 @@ class Home extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
   static propTypes = {
-    todos: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        completed: PropTypes.bool.isRequired,
-        text: PropTypes.string.isRequired
-      }).isRequired
-    ).isRequired,
+    todos: PropTypes.array.isRequired,
+    bannerImage: PropTypes.string,
 
     addTodo: PropTypes.func.isRequired,
-    toggleTodo: PropTypes.func.isRequired
+    toggleTodo: PropTypes.func.isRequired,
+    getBanner: PropTypes.func
+  }
+  componentDidMount() {
+    this.props.getBanner()
   }
   render() {
-    let { todos, toggleTodo } = this.props
+    let { todos, toggleTodo, bannerImage } = this.props
+    console.log('bannerImage=' + bannerImage)
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -37,6 +37,7 @@ class Home extends Component {
           <button type="submit">Add Todo</button>
         </form>
         <TodoList todos={todos} toggleTodo={toggleTodo} />
+        {bannerImage && <img src={bannerImage} alt="" />}
       </div>
     )
   }

@@ -1,9 +1,8 @@
-import { createAction } from 'redux-actions'
 let nextTodoId = 0
 export const addTodo = text => ({
   type: 'ADD_TODO',
-  id: nextTodoId++,
-  text
+  text,
+  id: nextTodoId++
 })
 
 export const setVisibilityFilter = filter => ({
@@ -16,8 +15,10 @@ export const toggleTodo = id => ({
   id
 })
 
-export const VisibilityFilters = {
-  SHOW_ALL: 'SHOW_ALL',
-  SHOW_COMPLETED: 'SHOW_COMPLETED',
-  SHOW_ACTIVE: 'SHOW_ACTIVE'
-}
+export const getBanner = () => ({
+  type: 'GET_BANNER',
+  // payload: netApi.getBanner().then(() => dispatch(getItem()))
+  payload: fetch('https://dog.ceo/api/breeds/image/random').then(response =>
+    response.json()
+  )
+})
