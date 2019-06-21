@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-class List extends Component {
+class index extends Component {
   static propTypes = {
     newList: PropTypes.array.isRequired,
     getNews: PropTypes.func.isRequired
@@ -16,10 +16,14 @@ class List extends Component {
   }
 
   render() {
-    let { newList } = this.props
+    let { newList, id, city } = this.props
     return (
       <div>
         <h1>这是我的列表页面哦</h1>
+        <h2>
+          传过来的参数为：id={id},city={city}
+        </h2>
+        <h2>从服务返回的数据列表</h2>
         {newList &&
           newList.length > 0 &&
           newList.map(item => {
@@ -29,4 +33,4 @@ class List extends Component {
     )
   }
 }
-export default List
+export default index

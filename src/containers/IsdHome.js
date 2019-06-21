@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { toggleTodo, addTodo, getBanner } from '../actions/index'
+import withPage from '../components/CPage'
 import Home from '../page/Home'
 const mapStateToProps = state => {
   const { todos, bannerImage } = state.home
@@ -15,7 +16,8 @@ const mapDispatchToProps = dispatch => ({
   getBanner: () => dispatch(getBanner())
 })
 
+const EnHome = withPage()(Home)
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(EnHome)
