@@ -3,6 +3,7 @@ import { Button } from 'antd-mobile'
 import PropTypes from 'prop-types'
 import TodoList from '../../components/TodoList'
 import { listPage, routerPush } from '../../utils/site'
+import style from './style.scss'
 
 class index extends Component {
   constructor(args) {
@@ -42,6 +43,7 @@ class index extends Component {
           <Button type="primary" onClick={() => this.goList()}>
             跳转到列表页面2
           </Button>
+          <div className={style.title}>我的颜色变了吗</div>
         </div>
         <div>
           <h2>请求服务得到banner</h2>

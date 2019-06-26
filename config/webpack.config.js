@@ -401,6 +401,7 @@ module.exports = function(webpackEnv) {
               exclude: cssModuleRegex,
               use: getStyleLoaders({
                 importLoaders: 1,
+                modules: true,
                 sourceMap: isEnvProduction && shouldUseSourceMap
               }),
               // Don't consider CSS imports dead code even if the
@@ -429,6 +430,7 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders(
                 {
                   importLoaders: 2,
+                  modules: true,
                   sourceMap: isEnvProduction && shouldUseSourceMap
                 },
                 'sass-loader'
@@ -458,6 +460,7 @@ module.exports = function(webpackEnv) {
               exclude: lessModuleRegex,
               use: getStyleLoaders({
                 importLoaders: 2,
+                modules: true,
                 sourceMap: isEnvProduction && shouldUseSourceMap
               }),
               sideEffects: true
@@ -491,12 +494,8 @@ module.exports = function(webpackEnv) {
               options: {
                 name: 'static/media/[name].[hash:8].[ext]'
               }
-            },
-            // my config
-            {
-              test: /\.scss$/,
-              loaders: ['style-loader', 'css-loader', 'sass-loader']
             }
+
             // ** STOP ** Are you adding a new loader?
             // Make sure to add the new loader(s) before the "file" loader.
           ]
