@@ -18,8 +18,8 @@ export const toggleTodo = id => ({
 
 export const getBanner = () => ({
   type: HOME_GET_BANNER,
-  payload: netApi.getBanner().then(res => res)
-  // payload: fetch('https://dog.ceo/api/breeds/image/random').then(response =>
-  //   response.json()
-  // )
+  // payload: netApi.getBanner().then(res => res)
+  payload: fetch('https://dog.ceo/api/breeds/image/random').then(response =>
+    response.json()
+  )
 })

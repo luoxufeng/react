@@ -80,21 +80,21 @@ module.exports = function(proxy, allowedHost) {
     },
     public: allowedHost,
     proxy: {
-      // '/api/': {
-      //   target: 'http://10.129.194.95:8081', // 源地址
-      //   // target: 'http://localhost:8081', //源地址
-      //   // target: 'http://192.168.9.78:8081', //源地址
-      //   changeOrigin: false,
-      //   xfwd: true,
-      //   autoRewrite: true,
-      //   pathRewrite: {
-      //     '^/api/': '/'
-      //   }
-      // }
       '/api/': {
-        target: 'http://localhost:3001',
-        secure: false
+        target: 'http://10.129.194.95:8081', // 源地址
+        // target: 'http://localhost:8081', //源地址
+        // target: 'http://192.168.9.78:8081', //源地址
+        changeOrigin: false,
+        xfwd: true,
+        autoRewrite: true,
+        pathRewrite: {
+          '^/api/': '/'
+        }
       }
+      // '/api/': {
+      //   target: 'http://localhost:3001',
+      //   secure: false
+      // }
     },
     before(app, server) {
       if (fs.existsSync(paths.proxySetup)) {
