@@ -1,3 +1,5 @@
+import netApi from '../api/index'
+
 let nextTodoId = 2
 export const HOME_ADD_TODO = 'HOME_ADD_TODO'
 export const HOME_TOGGLE_TODO = 'HOME_TOGGLE_TODO'
@@ -16,8 +18,8 @@ export const toggleTodo = id => ({
 
 export const getBanner = () => ({
   type: HOME_GET_BANNER,
-  // payload: netApi.getBanner().then(() => dispatch(getItem()))
-  payload: fetch('https://dog.ceo/api/breeds/image/random').then(response =>
-    response.json()
-  )
+  payload: netApi.getBanner().then(res => res)
+  // payload: fetch('https://dog.ceo/api/breeds/image/random').then(response =>
+  //   response.json()
+  // )
 })
