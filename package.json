@@ -144,6 +144,27 @@
       "jest-watch-typeahead/testname"
     ]
   },
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd-mobile",
+          "libraryDirectory": "es",
+          "style": "css"
+        }
+      ],
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ]
+  },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "babel-plugin-import": "^1.12.0",

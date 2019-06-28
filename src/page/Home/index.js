@@ -27,7 +27,7 @@ class index extends Component {
     let { todos, toggleTodo, bannerImage } = this.props
     console.log('bannerImage=' + bannerImage)
     return (
-      <div>
+      <div className={style.content}>
         <form onSubmit={e => this.onSubmit(e)}>
           <input
             type="text"

@@ -1,5 +1,25 @@
 $green: #14c3c3;
-.title {
-  font-size: 20px;
-  color: $green;
+
+.content {
+  padding: 15px;
+  input {
+    width: 200px;
+    margin: 10px;
+  }
+  input,
+  button {
+    padding: 5px 15px;
+  }
+  .title {
+    font-size: 20px;
+    color: $green;
+  }
+  ul {
+    list-style-type: none;
+    background: 0;
+    li {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+  }
 }
